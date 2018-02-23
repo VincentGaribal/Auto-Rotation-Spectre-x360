@@ -19,5 +19,17 @@ while inotifywait -qq -e modify sensor.log; do
 orientation=$(tail -n 1 sensor.log | grep "orientation" | awk '{print $4}')
 echo $orientation
 
+# case statement to rotate screen
+case $orientation in
+    normal)
+	xrandr --output $screen --rotate normal ;;
+    bottom-up)
+	xrandr --output $screen --rotate inverted ;;
+    right-up)
+	xrandr --output $screen --rotate right ;;
+    left-up)
+	xrandr --output $screen --rotate left ;;
+esac
+
 # End of while loop
 done
