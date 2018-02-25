@@ -10,9 +10,6 @@ echo "Auto recognize screen : "$screen
 touchscreenID=$(xinput --list | grep -w "ELAN2514:00 04F3:2593  " | awk '{match($0,"id=[[:digit:]]{,2}",a)}END{print a[0]}')
 touchscreenPenID=$(xinput --list | grep Pen | awk '{match($0,"id=[[:digit:]]{,2}",a)}END{print a[0]}')
 touchpadID=$(xinput --list | grep Synaptics | awk '{match($0,"id=[[:digit:]]{,2}",a)}END{print a[0]}')
-echo $touchscreenID
-echo $touchscreenPenID
-echo $touchpadID
 
 # Clear sensor.log
 >sensor.log
